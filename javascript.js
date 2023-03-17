@@ -4,7 +4,7 @@ let computerScore = 0;
 
 function compSelection(){
   return getComputerChoice[(Math.floor(Math.random()* 3))];
-}
+} // This is to generate random choice from (rock, paper, scissor)
 
 function playGame(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
@@ -33,6 +33,7 @@ function game(){
     console.log(`Player Score: ${playerScore}`);
     console.log(`Computer Score: ${computerScore}`);
   }
+  
   if (playerScore > computerScore){
     alert('Player Win');
   }
