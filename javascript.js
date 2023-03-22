@@ -6,7 +6,6 @@ const resetButton = document.querySelector('#reset');
 let playerScore = 0;
 let computerScore = 0;
 
-
 function playRound(e) {
     const playerSelection = e.target.id.toLowerCase();
     let computerSelection = compSelection();
