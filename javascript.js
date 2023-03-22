@@ -1,48 +1,58 @@
 const getComputerChoice = ['rock','paper','scissor'];
+const player = document.querySelector('#player');
+const comp = document.querySelector('#computer');
+const result = document.querySelector('#result');
+const resetButton = document.querySelector('#reset');
 let playerScore = 0;
 let computerScore = 0;
 
-function compSelection(){
-  return getComputerChoice[(Math.floor(Math.random()* 3))];
-} // This is to generate random choice from (rock, paper, scissor)
 
-function playGame(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
-
+function playRound(e) {
+    const playerSelection = e.target.id.toLowerCase();
+    let computerSelection = compSelection();
+  
   if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'scissor' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection === 'scissor')){
-    alert(`You Lose! ${computerSelection} beat ${playerSelection}`);
+    result.textContent = 'Computer Win!';
     computerScore++;
+    
   }
   else if (playerSelection === computerSelection){
-    alert('Tied Game!');
+    result.textContent = 'Tied Game!';
   }
   else if ((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'rock' && computerSelection === 'scissor') || (playerSelection === 'scissor' && computerSelection === 'paper')) {
-    alert(`You Win! ${playerSelection} beat ${computerSelection}`);
+    result.textContent = 'Player Win';;
     playerScore++;
-  }
-  else {
-    alert('Please enter (rock, paper, scissor)');
-  }
-}
+  } 
 
-function game(){
-  for (let i = 0; i < 5; i++){
-    let playerChoice = prompt('Please enter your choice: (rock, paper, scissor)');
-    let computerSelection = compSelection();
-    playGame(playerChoice, computerSelection);
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-  }
+  player.textContent = playerScore;
+  comp.textContent = computerScore;
   
-  if (playerScore > computerScore){
-    alert('Player Win');
-  }
-  else if (playerScore == computerScore){
-    alert('Tied game');
-  }
-  else {
-    alert('Computer Win');
+  winningCondition();
+}
+
+function resetGame(){
+  playerScore = 0;
+  computerScore = 0;
+  result.textContent= '';
+}
+
+function compSelection(){
+  return getComputerChoice[(Math.floor(Math.random()* 3))];
+}
+
+function winningCondition(){
+  if (playerScore >= 5 ) { 
+    result.textContent = 'Player Win the game!!';
+    setTimeout(resetGame, 2000);
+  } else if (computerScore >= 5) {
+    result.textContent = 'Computer Win the game!!';
+    setTimeout(resetGame, 2000);
   }
 }
 
-game();
+window.addEventListener('click', playRound);
+resetButton.addEventListener('click', resetGame);
+
+
+
+
