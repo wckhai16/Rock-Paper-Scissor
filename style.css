@@ -53,9 +53,23 @@ button {
 
 .btn-style {
   border-radius: 10px;
-  border: 2px solid #ffffff;
   background-color: rgba(255, 255, 255, 0.541);
   font-size: 50px;
   width: 100px;
   height: 100px;
+}
+
+.reset-button {
+  margin-top: 1em;
+  padding: 10px 40px;
+  border-radius: 5px 10px 5px 10px;
+  background-color: #0E8388;
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  color: white;
+}
+
+/* ID */
+#result {
+  font-size: 30px;
 }
